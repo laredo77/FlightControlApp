@@ -20,35 +20,35 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //fgPlayer = FGPlayer()
-        VM = ViewModel()
+        //VM = ViewModel()
 
         btnConnect.setOnClickListener {
             val ip = ipTextBox.text
             val port = portTextBox.text.toString()
-            VM.Connect(ip, port)
+            VM = ViewModel(ip.toString(), port.toInt())
         }
 
-        val throttle = findViewById<SeekBar>(R.id.throttleBar)
-        throttle?.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(throttle: SeekBar,
-                                           progress: Int, fromUser: Boolean) {
-                // write custom code for progress is changed
-                VM.onChange_throttle(throttle.progress)
-            }
-
-            override fun onStartTrackingTouch(throttle: SeekBar) {
-                // write custom code for progress is started
-            }
-
-            override fun onStopTrackingTouch(throttle: SeekBar) {
-                //println(throttle.progress)
-                // write custom code for progress is stopped
-//                    Toast.makeText(this@MainActivity,
-//                        "Progress is: " + seek.progress + "%",
-//                        Toast.LENGTH_SHORT).show()
-            }
-        })
+//        val throttle = findViewById<SeekBar>(R.id.throttleBar)
+//        throttle?.setOnSeekBarChangeListener(object :
+//            SeekBar.OnSeekBarChangeListener {
+//            override fun onProgressChanged(throttle: SeekBar,
+//                                           progress: Int, fromUser: Boolean) {
+//                // write custom code for progress is changed
+//                VM.onChange_throttle(throttle.progress)
+//            }
+//
+//            override fun onStartTrackingTouch(throttle: SeekBar) {
+//                // write custom code for progress is started
+//            }
+//
+//            override fun onStopTrackingTouch(throttle: SeekBar) {
+//                //println(throttle.progress)
+//                // write custom code for progress is stopped
+////                    Toast.makeText(this@MainActivity,
+////                        "Progress is: " + seek.progress + "%",
+////                        Toast.LENGTH_SHORT).show()
+//            }
+//        })
 
         val rudder = findViewById<SeekBar>(R.id.rudderBar)
         rudder?.setOnSeekBarChangeListener(object :
