@@ -7,50 +7,74 @@ import com.example.flightcontrolapp.model.*
 import com.example.flightcontrolapp.view.Joystick
 import android.widget.SeekBar
 import android.widget.Toast
+import com.example.flightcontrolapp.view_model.ViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var fgPlayer: FGPlayer
-    private lateinit var client: Client
-    //private lateinit var joystick: Joystick
+    //private lateinit var fgPlayer: FGPlayer
+    //private lateinit var client: Client
+    private lateinit var joystick: Joystick
+    private lateinit var VM: ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fgPlayer = FGPlayer()
+        //fgPlayer = FGPlayer()
+        VM = ViewModel()
 
         btnConnect.setOnClickListener {
-            val ip = ipTextBox.text.toString()
-            val port = ipTextBox.text.toString()
-            if(ip.isEmpty() or port.isEmpty()) {
-                // should check if its legal address and digits and so on..
-                println("error message") // pop up some error message
-            } else {
-                client = Client(ip, port.toInt())
+            val ip = ipTextBox.text
+            val port = portTextBox.text.toString()
+            VM.Connect(ip, port)
+        }
+
+        val throttle = findViewById<SeekBar>(R.id.throttleBar)
+        throttle?.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(throttle: SeekBar,
+                                           progress: Int, fromUser: Boolean) {
+                // write custom code for progress is changed
+                VM.onChange_throttle(throttle.progress)
             }
-            //println("Hello World!")
 
-            val seek = findViewById<SeekBar>(R.id.seekBar)
-            seek?.setOnSeekBarChangeListener(object :
-                SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(seek: SeekBar,
-                                               progress: Int, fromUser: Boolean) {
-                    // write custom code for progress is changed
-                }
+            override fun onStartTrackingTouch(throttle: SeekBar) {
+                // write custom code for progress is started
+            }
 
-                override fun onStartTrackingTouch(seek: SeekBar) {
-                    // write custom code for progress is started
-                }
-
-                override fun onStopTrackingTouch(seek: SeekBar) {
-                    println(seek.progress)
-                    // write custom code for progress is stopped
+            override fun onStopTrackingTouch(throttle: SeekBar) {
+                //println(throttle.progress)
+                // write custom code for progress is stopped
 //                    Toast.makeText(this@MainActivity,
 //                        "Progress is: " + seek.progress + "%",
 //                        Toast.LENGTH_SHORT).show()
-                }
-            })
-        }
+            }
+        })
+
+        val rudder = findViewById<SeekBar>(R.id.rudderBar)
+        rudder?.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(rudder: SeekBar,
+                                           progress: Int, fromUser: Boolean) {
+                // write custom code for progress is changed
+            }
+
+            override fun onStartTrackingTouch(rudder: SeekBar) {
+                // write custom code for progress is started
+            }
+
+            override fun onStopTrackingTouch(rudder: SeekBar) {
+                VM.onChange_rudder(rudder.progress)
+                //println(rudder.progress)
+                // write custom code for progress is stopped
+//                    Toast.makeText(this@MainActivity,
+//                        "Progress is: " + seek.progress + "%",
+//                        Toast.LENGTH_SHORT).show()
+            }
+        })
+
+//        joystick = Joystick()
+//        joystick.onChange = (a, e)->{
+//        }
 
 
 

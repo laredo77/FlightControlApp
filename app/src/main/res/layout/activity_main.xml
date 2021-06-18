@@ -40,17 +40,30 @@
         app:layout_constraintTop_toBottomOf="@+id/portTextBox" />
 
     <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="402dp"
-        android:layout_height="10dp"
-        android:paddingStart="10dp"
+        android:id="@+id/throttleBar"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
+        android:max="100"
+        android:min="0"
+        android:paddingStart="8dp"
         android:rotation="270"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnConnect"
+        app:layout_constraintVertical_bias="0.409"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-162dp" />
+
+    <SeekBar
+        android:id="@+id/rudderBar"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        android:max="100"
+        android:min="-100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect"
-        app:layout_constraintVertical_bias="0.497"
-        tools:ignore="MissingConstraints"
-        android:max="100"
-        android:min="0" />
+        app:layout_constraintVertical_bias="0.899" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
