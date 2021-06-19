@@ -41,9 +41,10 @@ In order to disconnect, press the dedicate bottun and close the applications.
 
 ### Dictionary
 Folders of the project:
-> Model  
-> ViewModel 
+> Model
+> ViewModel
 > View
+> 
 
 ![uml](https://user-images.githubusercontent.com/60240620/122652958-4cba6080-d14a-11eb-8583-958c6796a956.jpg)
 
