@@ -20,8 +20,8 @@ class Joystick(joyStickView: JoyStickView) : AppCompatActivity() {
         joystick.setInnerCircleImageResId(R.mipmap.ic_joystic_round)
         joystick.setInnerCircleRadius(0.20f)
         joystick.setOuterCircleBorderColor(Color.RED)
-        joystick.setOuterCircleBorderStrokeWidth(25F)
-        joystick.setOuterCircleColor(Color.WHITE)
+        joystick.setOuterCircleBorderStrokeWidth(15F)
+        joystick.setOuterCircleColor(Color.TRANSPARENT)
         joystick.setLockCenter(true)
         joystick.setShadowColor(Color.BLACK)
         joystick.setShadowRadius(7f)
@@ -32,5 +32,4 @@ class Joystick(joyStickView: JoyStickView) : AppCompatActivity() {
         this.angle = angle
         this.strength = strength
     }
-
 }

@@ -13,7 +13,6 @@ import kotlin.math.cos
 import kotlin.math.sin
 import android.widget.Toast
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var VM: ViewModel
@@ -28,10 +27,12 @@ class MainActivity : AppCompatActivity() {
             val port = portTextBox.text.toString()
             try {
                 VM = ViewModel(ip.toString(), port.toInt())
+                enable = true
             } catch (e : Exception) {
                 val ad = AlertDialog.Builder(this)
                 ad.setTitle("Error")
-                ad.setMessage("Couldn't connect to the server.\nPlease submit your IP and Port before pressing connect button")
+                ad.setMessage("Couldn't connect to the server." +
+                        "\nPlease submit valid IP and Port before pressing the connect button.")
 
                 ad.setPositiveButton(android.R.string.yes) { dialog, which ->
                     Toast.makeText(applicationContext,
@@ -44,18 +45,15 @@ class MainActivity : AppCompatActivity() {
                 }
                 ad.show()
             }
-            enable = true
         }
 
         val throttle = findViewById<SeekBar>(R.id.throttleBar)
         throttle?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(throttle: SeekBar,
-                                           progress: Int, fromUser: Boolean) {
-            }
+                                           progress: Int, fromUser: Boolean) {}
 
-            override fun onStartTrackingTouch(throttle: SeekBar) {
-            }
+            override fun onStartTrackingTouch(throttle: SeekBar) {}
 
             override fun onStopTrackingTouch(throttle: SeekBar) {
                 if (enable)
@@ -67,11 +65,9 @@ class MainActivity : AppCompatActivity() {
         rudder?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(rudder: SeekBar,
-                                           progress: Int, fromUser: Boolean) {
-            }
+                                           progress: Int, fromUser: Boolean) {}
 
-            override fun onStartTrackingTouch(rudder: SeekBar) {
-            }
+            override fun onStartTrackingTouch(rudder: SeekBar) {}
 
             override fun onStopTrackingTouch(rudder: SeekBar) {
                 if (enable)

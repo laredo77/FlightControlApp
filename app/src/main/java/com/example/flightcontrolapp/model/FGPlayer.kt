@@ -66,7 +66,6 @@ class FGPlayer(ip: String?, port: Int) {
         })
     }
 
-
     @Throws(InterruptedException::class)
     fun close() {
         dispatchQueue.put(Runnable {

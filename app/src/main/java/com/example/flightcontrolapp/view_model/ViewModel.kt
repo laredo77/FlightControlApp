@@ -10,7 +10,6 @@ class ViewModel(ip: String?, port: Int) {
         model = FGPlayer(ip, port)
     }
 
-
     fun onChange_throttle(value: Int) {
         model.set_throttle(value)
     }
