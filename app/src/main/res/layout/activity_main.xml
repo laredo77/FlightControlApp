@@ -12,22 +12,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:hint="Enter Server IP"
+        android:paddingStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingStart="8dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/portTextBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Enter Server Port"
+        android:paddingStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ipTextBox"
-        android:paddingStart="8dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/ipTextBox" />
 
     <Button
         android:id="@+id/btnConnect"
@@ -41,29 +41,39 @@
 
     <SeekBar
         android:id="@+id/throttleBar"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="192dp"
         android:max="100"
         android:min="0"
-        android:paddingStart="8dp"
         android:rotation="270"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rudderBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect"
-        app:layout_constraintVertical_bias="0.409"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-162dp" />
+        app:layout_constraintVertical_bias="0.423"
+        tools:ignore="MissingConstraints" />
 
     <SeekBar
         android:id="@+id/rudderBar"
         android:layout_width="350dp"
         android:layout_height="40dp"
+        android:max="100"
+        android:min="-100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.737"
-        android:max="100"
-        android:min="-100"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect"
-        app:layout_constraintVertical_bias="0.899" />
+        app:layout_constraintVertical_bias="0.92" />
+
+    <com.jackandphantom.joystickview.JoyStickView
+        android:id="@+id/joy"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toTopOf="@+id/rudderBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/portTextBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
