@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <!--    backgound=""-->
 
     <EditText
         android:id="@+id/ipTextBox"
@@ -22,6 +23,7 @@
         android:id="@+id/portTextBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:hint="Enter Server Port"
         android:paddingStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,11 +35,22 @@
         android:id="@+id/btnConnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Connect"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/portTextBox" />
+
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disconnect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rudderBar" />
 
     <SeekBar
         android:id="@+id/throttleBar"
@@ -64,16 +77,20 @@
         app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnConnect"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.803"
+
+        />
 
     <com.jackandphantom.joystickview.JoyStickView
         android:id="@+id/joy"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="300dp"
+        android:layout_height="330dp"
         android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toTopOf="@+id/rudderBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/portTextBox" />
+        app:layout_constraintTop_toBottomOf="@+id/portTextBox"
+        app:layout_constraintVertical_bias="0.813" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

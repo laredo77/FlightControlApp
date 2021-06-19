@@ -1,6 +1,5 @@
 package com.example.flightcontrolapp.view_model
 
-import android.text.Editable
 import com.example.flightcontrolapp.model.FGPlayer
 
 class ViewModel(ip: String?, port: Int) {
@@ -26,5 +25,9 @@ class ViewModel(ip: String?, port: Int) {
 
     fun setElevator(value : Float) {
         model.setElevator(value)
+    }
+
+    fun disconnect() {
+        model.close()
     }
 }
