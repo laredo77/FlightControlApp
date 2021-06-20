@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*
+         button click listener.
+         on click, will try to connect to the server.
+         if IP/Port invalid, pop up message will show.
+         otherwise, initialize vm with the ip&port data.
+        */
         btnConnect.setOnClickListener {
             val ip = ipTextBox.text
             val port = portTextBox.text.toString()
@@ -47,6 +53,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        /*
+         throttle listener. when the user will change the value
+         of the throttle seekbar, the listener will know it and call
+         vm onchange function.
+         */
         val throttle = findViewById<SeekBar>(R.id.throttleBar)
         throttle?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
@@ -61,6 +72,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        /*
+         rudder listener. when the user will change the value
+         of the rudder seekbar, the listener will know it and call
+         vm onchange function.
+         */
         val rudder = findViewById<SeekBar>(R.id.rudderBar)
         rudder?.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
@@ -75,9 +91,17 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        /*
+         initialize joystick with joystickview interface.
+         */
         val joyStickView = findViewById<JoyStickView>(R.id.joy)
         val joystick = Joystick(joyStickView)
 
+        /*
+         joystick listener. when user move the joystick, the in the lambada expression
+         calculated the x and y axes values according the movement.
+         then, send the data to vm in order to send the data to the server.
+         */
         joyStickView.setOnMoveListener { angle, strength ->
             joystick.onChange(angle, strength)
             if (enable) {
@@ -88,6 +112,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        /*
+         disconnect listener. when user press the disconnect button
+         this function will send alert to vm disconnect function.
+         */
         btnDisconnect.setOnClickListener {
             if (enable)
                 VM.disconnect()

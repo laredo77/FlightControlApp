@@ -16,6 +16,13 @@ class FGPlayer(ip: String?, port: Int) {
     lateinit var socket: Socket
     lateinit var output: PrintWriter
 
+    /*
+     model constructor. when called, according the active object design pattern,
+     model will initialize queue of tasks. the constructor create new thread that connect
+     to the flightgear server with the ip&port given from user.
+     the tasks send to the server on by one in a look until the user will press
+     the disconnect button.
+     */
     init {
         shouldStop = false
         Thread {
@@ -30,6 +37,11 @@ class FGPlayer(ip: String?, port: Int) {
         }.start()
     }
 
+    /*
+     when the rudder seekbar value change, this function will add new
+     task to the queue. the task function is to send the new value wrap by
+     specific string to the server.
+     */
     @Throws(InterruptedException::class)
     fun set_rudder(value: Int) {
         rudder = value * 0.01
@@ -39,6 +51,11 @@ class FGPlayer(ip: String?, port: Int) {
         })
     }
 
+    /*
+     when the throttle seekbar value change, this function will add new
+     task to the queue. the task function is to send the new value wrap by
+     specific string to the server.
+     */
     @Throws(InterruptedException::class)
     fun set_throttle(value: Int) {
         throttle = value * 0.01
@@ -48,6 +65,11 @@ class FGPlayer(ip: String?, port: Int) {
         })
     }
 
+    /*
+     when the aileron (x axle in the joystick) value change,
+     this function will add new task to the queue.
+     the task function is to send the new value wrap by specific string to the server.
+     */
     @Throws(InterruptedException::class)
     fun setAileron(value: Float) {
         aileron = value * 0.01
@@ -57,6 +79,11 @@ class FGPlayer(ip: String?, port: Int) {
         })
     }
 
+    /*
+     when the elevator (y axle in the joystick) value change,
+     this function will add new task to the queue.
+     the task function is to send the new value wrap by specific string to the server.
+    */
     @Throws(InterruptedException::class)
     fun setElevator(value: Float) {
         elevator = value * 0.01
@@ -66,6 +93,12 @@ class FGPlayer(ip: String?, port: Int) {
         })
     }
 
+    /*
+     when the user press the disconnect button, this function will add
+     new task to the queue that change the value of the boolean var shouldStop
+     to true. the idea is to let the other tasks in the line to finish and then to close
+     the connection with the server.
+     */
     @Throws(InterruptedException::class)
     fun close() {
         dispatchQueue.put(Runnable {

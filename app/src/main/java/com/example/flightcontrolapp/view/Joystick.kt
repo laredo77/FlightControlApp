@@ -15,6 +15,10 @@ class Joystick(joyStickView: JoyStickView) : AppCompatActivity() {
         initStyle()
     }
 
+    /*
+     joystick view initializations. defining how the joystick looks,
+     size and colors.
+     */
     fun initStyle() {
         joystick.setInnerCircleColor(Color.BLACK)
         joystick.setInnerCircleImageResId(R.mipmap.ic_joystic_round)
@@ -28,6 +32,9 @@ class Joystick(joyStickView: JoyStickView) : AppCompatActivity() {
         joystick.setShadowDxAndDy(5f, 5f)
     }
 
+    /*
+     when the joystick had change in its position, save the new position.
+     */
     fun onChange(angel: Double, strength: Float) {
         this.angle = angle
         this.strength = strength
