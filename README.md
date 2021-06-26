@@ -7,6 +7,7 @@ Android application for controlling and flying an airplane in the 'FlightGear' i
 This app is an easy to use tool for users who want to make the plane fly in FlightGear simulator.
 The app is designed for Android, and allows the user to control the plane during the flight using a joystick that simulates the pilot's joystick, the rudder and the throttle slider.
 The application has a nice graphic design which makes it easier and more convenient to use, thus helping the pilot to improve his skills.
+You can take a look on the video on the following link: https://www.youtube.com/watch?v=yjrDCrwaFcc&t=35s
 
 ### Installation
 To use the application, first download the code to your computer or mobile device.
